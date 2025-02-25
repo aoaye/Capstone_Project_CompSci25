@@ -40,28 +40,24 @@ annotations = annot['annotations']
 image_paths = []
 labels = []
 label_names = []
-bbox_x1 = []
-bbox_y1 = []    
-bbox_x2 = []
-bbox_y2 = []
 
 # Extract the image paths and labels
 for i in range(annotations.shape[1]):  # Iterate over all images
     image_path = annotations[0][i][0][0].replace('car_ims/', '')
     image_paths.append(image_path)
-    
+
     # Extract the labels
     labels.append(annotations[0][i][5][0][0])
     label_names.append(class_names[labels[-1]-1])
-    
+
 # Display some example images
 for i in range(5):
     print(image_paths[i], labels[i], label_names[i])
 
 # Create a DataFrame with the image paths and labels
 df = pd.DataFrame({
-    'image_paths': image_paths, 
-    'labels': labels, 
+    'image_paths': image_paths,
+    'labels': labels,
     'label_names': label_names,
 })
 
