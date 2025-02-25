@@ -119,7 +119,7 @@ def load_and_preprocess_image(image_paths, labels):
     return image, labels
 
 # Convert Pandas DataFrame to TensorFlow dataset
-def create_tf_dataset(csv_file, folder, batch_size=32):
+def create_tf_dataset(csv_file, folder, batch_size=64):
     df = pd.read_csv(csv_file)
     image_paths = [os.path.join(folder, path) for path in df['image_paths'].values]
     labels = df['labels'].values
