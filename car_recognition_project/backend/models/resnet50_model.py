@@ -169,3 +169,7 @@ test_loss, test_accuracy = model.evaluate(test_ds)
 # Print the evaluation results
 print(f"Test Loss: {test_loss}")
 print(f"Test Accuracy: {test_accuracy}")
+
+#Save the model
+model.save('resnet50_model.h5')
+
