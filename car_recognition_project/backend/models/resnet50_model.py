@@ -166,10 +166,16 @@ history = model.fit(train_ds, validation_data=val_ds, epochs=50, callbacks=[earl
 # Evaluate the model on the test dataset
 test_loss, test_accuracy = model.evaluate(test_ds)
 
+#Evaluate the model on the val dataset
+val_loss, val_accuracy = model.evaluate(val_ds)
+
 # Print the evaluation results
 print(f"Test Loss: {test_loss}")
 print(f"Test Accuracy: {test_accuracy}")
+print(f"Val Loss: {val_loss}")
+print(f"Val Accuracy: {val_accuracy}")
 
 #Save the model
-model.save('resnet50_model.h5')
+model.save('/models/resnet50_model.h5')
+model.save('/models/resnet50_model.keras')
 
