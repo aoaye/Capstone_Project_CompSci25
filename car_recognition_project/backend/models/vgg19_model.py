@@ -67,3 +67,19 @@ early_stopping = EarlyStopping(monitor='val_loss', mode = 'min', verbose=1, pati
 
 # Fit the model
 history = vggmodel.fit(train_ds, validation_data=val_ds, epochs=50, callbacks=[early_stopping])
+
+# Evaluate the model on the test dataset
+test_loss, test_accuracy = vggmodel.evaluate(test_ds)
+
+#Evaluate the model on the val dataset
+val_loss, val_accuracy = vggmodel.evaluate(val_ds)
+
+# Print the evaluation results
+print(f"Test Loss: {test_loss}")
+print(f"Test Accuracy: {test_accuracy}")
+print(f"Val Loss: {val_loss}")
+print(f"Val Accuracy: {val_accuracy}")
+
+#Save the model
+vggmodel.save('models/vgg19_model.h5')
+vggmodel.save('models/vgg19_model.keras')
