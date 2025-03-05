@@ -1,6 +1,6 @@
 from tensorflow.keras.models import load_model
 
-MODEL_PATH = "models/resnet50_model.keras"
+MODEL_PATH = r"models\resnet50.keras"
 
 def load_trained_model():
     model = load_model(MODEL_PATH)
