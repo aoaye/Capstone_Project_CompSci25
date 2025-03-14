@@ -13,9 +13,7 @@ async def predict(file: UploadFile = File(...)):
 
     prediction = predict_car(file_path)
     if isinstance(prediction, str):
-        # return {"prediction": []}
-        # #jsonify the prediction
-        return jsonify({"prediction": prediction})
+        return {"prediction": []}
     
 
     prediction = [{"label": label, "probability": float(probability)} for label, probability in prediction]
