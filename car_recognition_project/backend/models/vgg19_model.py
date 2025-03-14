@@ -81,5 +81,5 @@ print(f"Val Loss: {val_loss}")
 print(f"Val Accuracy: {val_accuracy}")
 
 #Save the model
-vggmodel.save('models/vgg19_model.h5')
-vggmodel.save('models/vgg19_model.keras')
+vggmodel.save('car_recognition_project/backend/models/vgg19_model.h5')
+vggmodel.save('car_recognition_project/backend/models/vgg19_model.keras')

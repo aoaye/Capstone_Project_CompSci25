@@ -176,6 +176,6 @@ print(f"Val Loss: {val_loss}")
 print(f"Val Accuracy: {val_accuracy}")
 
 #Save the model
-model.save('/models/resnet50_model.h5')
-model.save('/models/resnet50_model.keras')
+model.save('car_recognition_project/backend/models/resnet50.h5')
+model.save('car_recognition_project/backend/models/resnet50_model.keras')
 

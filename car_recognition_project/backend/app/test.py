@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from app.predict import predict_car
 
 # Example usage
-image_path = r"temp\AMV12.jpg"
+image_path = r"car_recognition_project\backend\temp\AMV12.jpg"
 print("Starting prediction...")
 top_predictions = predict_car(image_path)
 print("Prediction completed.")

@@ -17,11 +17,8 @@ def load_labels(csv_path):
     return label_names
 
 # Update with the path to your existing CSV file
-csv_path = r"dataset\cars_annos.csv"
+csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'dataset', 'cars_annos.csv'))
 label_names = load_labels(csv_path)
-
-for idx, label in label_names.items():
-    print(f"{idx}: {label}")
 
 def predict_car(image_path, top_n=3, threshold=0.1):
     print("Preprocessing image...")
