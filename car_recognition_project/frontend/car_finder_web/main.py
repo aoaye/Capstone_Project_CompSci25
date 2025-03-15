@@ -19,7 +19,7 @@ if uploaded_file is not None:
     
     st.write("Starting prediction...")
     # Save the uploaded image to a temporary file
-    temp_image_path = "temp_image.jpg"
+    temp_image_path = "temp_image"
     image.save(temp_image_path)
     
     # Predict the car make and model using AWS App Runner server
