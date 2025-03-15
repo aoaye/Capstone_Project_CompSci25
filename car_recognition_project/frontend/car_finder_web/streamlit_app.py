@@ -20,8 +20,8 @@ history_page = st.Page(
     icon='📚'
 )
 
-# Logo
-st.logo("assets/CarVision_logo.png")
+# Sidebar
+st.sidebar.title("CarVision")
 st.sidebar.text("A Capstone Project by Aoaye Imoagene")
 
 # Navigation
