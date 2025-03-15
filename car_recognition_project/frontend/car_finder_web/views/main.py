@@ -5,11 +5,18 @@ import pandas as pd
 import sys
 import os
 import requests
+from stqdm import stqdm
+from time import sleep
 
-# Streamlit code
+
 st.title('CarVision')
-st.write('This is a simple web app to recognize cars.')
-st.write('Upload a car image and the model will predict the car make and model.')
+st.write(
+    """
+    Upload an image of a car, and our model will identify its make and model with high accuracy. 
+    Make sure the image is clear and well-lit for the best results!
+    """
+    )
+
 
 # Create interface to interact with prediction model
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
@@ -26,13 +33,24 @@ if uploaded_file is not None:
     url = "https://jsmrkvzrep.eu-west-1.awsapprunner.com/predict/"
     with open(temp_image_path, "rb") as image_file:
         response = requests.post(url, files={"file": image_file})
+        
+        # Simulate waiting for the prediction to complete, for demonstration purposes
+        # while actual prediction time is much shorter
+        for _ in stqdm(range(10), "Waiting for prediction..."):
+            sleep(0.5)
     
     if response.status_code == 200:
         top_predictions = response.json()["prediction"]
         st.write("Prediction completed.")
-        for prediction in top_predictions:
-            label = prediction["label"]
-            probability = prediction["probability"]
-            st.write(f"Label: {label}, Probability: {probability:.2%}")
+        
+        with st.expander("Top Predictions"):
+            for prediction in top_predictions:
+                label = prediction["label"]
+                probability = prediction["probability"]
+                st.write(f"We're **{probability:.2%}** sure it is a **{label}**.")
+        # for prediction in top_predictions:
+        #     label = prediction["label"]
+        #     probability = prediction["probability"]
+        #     st.write(f"We're **{probability:.2%}** sure it is a **{label}**.")
     else:
         st.write("Failed to get prediction. Status code:", response.status_code)
