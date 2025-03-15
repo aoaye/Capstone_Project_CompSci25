@@ -1,6 +1,6 @@
 import streamlit as st
 
-# --- Page Setup ---
+# Page Setup
 homepage = st.Page(
     page="views/homepage.py",
     title='CarVision Home',
@@ -20,6 +20,10 @@ history_page = st.Page(
     icon='📚'
 )
 
-# --- Navigation/sidebar ---
+# Logo
+st.logo("assets/CarVision_logo.png")
+st.sidebar.text("A Capstone Project by Aoaye Imoagene")
+
+# Navigation
 pg = st.navigation(pages = [homepage, main_page, history_page])
 pg.run()
