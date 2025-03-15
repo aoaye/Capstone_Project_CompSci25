@@ -4,14 +4,10 @@ import numpy as np
 import pandas as pd
 import sys
 import os
-
-# Add the directory containing the app module to the sys.path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'backend', 'app')))
-
-from predict import predict_car
+import requests
 
 # Streamlit code
-st.title('Car Recognition')
+st.title('CarVision')
 st.write('This is a simple web app to recognize cars.')
 st.write('Upload a car image and the model will predict the car make and model.')
 
@@ -26,12 +22,17 @@ if uploaded_file is not None:
     temp_image_path = "temp_image.jpg"
     image.save(temp_image_path)
     
-    # Predict the car make and model
-    top_predictions = predict_car(temp_image_path)
-    st.write("Prediction completed.")
+    # Predict the car make and model using AWS App Runner server
+    url = "https://jsmrkvzrep.eu-west-1.awsapprunner.com/predict/"
+    with open(temp_image_path, "rb") as image_file:
+        response = requests.post(url, files={"file": image_file})
     
-    if isinstance(top_predictions, str):
-        st.write(top_predictions)
-    else:
-        for label, probability in top_predictions:
+    if response.status_code == 200:
+        top_predictions = response.json()["prediction"]
+        st.write("Prediction completed.")
+        for prediction in top_predictions:
+            label = prediction["label"]
+            probability = prediction["probability"]
             st.write(f"Label: {label}, Probability: {probability:.2%}")
+    else:
+        st.write("Failed to get prediction. Status code:", response.status_code)
