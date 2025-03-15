@@ -12,7 +12,7 @@ st.write('This is a simple web app to recognize cars.')
 st.write('Upload a car image and the model will predict the car make and model.')
 
 # Create interface to interact with prediction model
-uploaded_file = st.file_uploader("Choose an image...", type="jpg, jpeg, png")
+uploaded_file = st.file_uploader("Choose an image...", type="jpg, png")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption='Uploaded Image.', use_container_width=True)
