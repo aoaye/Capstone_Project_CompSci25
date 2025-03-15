@@ -1,2 +1,2 @@
 streamlit==1.43.0
-stqdm==0.0.1
+stqdm==0.0.5
