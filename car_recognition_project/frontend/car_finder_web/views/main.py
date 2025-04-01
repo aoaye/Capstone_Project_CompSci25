@@ -61,3 +61,7 @@ if uploaded_file is not None:
         st.error(f"An error occurred: {req_err}")
     except Exception as e:
         st.error(f"An unexpected error occurred: {e}")
+    finally:
+        # Clean up the temporary image file
+        if os.path.exists(temp_image_path):
+            os.remove(temp_image_path)
