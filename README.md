@@ -1,4 +1,4 @@
-# Car Recognition App
+# CarVision
 
 ## Overview
 This project is a deep learning-based car recognition application that allows users to identify cars from images. The model classifies cars into their respective make, model, and year. The application was built using TensorFlow Keras and ResNet50 for image classification and is deployed via a web-based Streamlit application and an API backend.
