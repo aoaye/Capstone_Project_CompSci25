@@ -1,0 +1,15 @@
+name: Keep Service Awake
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # every day at midnight
+  workflow_dispatch:       # allows manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Curl request to service
+        run: |
+          curl -s https://carvision.streamlit.app > /dev/null
